@@ -78,6 +78,10 @@ class Encryption {
       let key = crypto.enc.Utf8.parse(this.params.key)
       let iv = crypto.enc.Utf8.parse(this.params.iv)
       return crypto.AES.encrypt(str, key, { iv: iv }).toString()
+    } else if (this.type == 'DES'){
+      let key = crypto.enc.Utf8.parse(this.params.key)
+      let iv = crypto.enc.Utf8.parse(this.params.iv)
+      return crypto.DES.encrypt(str, key, { iv: iv }).toString()
     }
   }
 
@@ -90,6 +94,11 @@ class Encryption {
       let key = crypto.enc.Utf8.parse(this.params.key)
       let iv = crypto.enc.Utf8.parse(this.params.iv)
       return crypto.AES.decrypt(str, key, { iv: iv }).toString(crypto.enc.Utf8)
+    } else if (this.type == 'DES') {
+      // 注意一些特殊字符问题
+      let key = crypto.enc.Utf8.parse(this.params.key)
+      let iv = crypto.enc.Utf8.parse(this.params.iv)
+      return crypto.DES.decrypt(str, key, { iv: iv }).toString(crypto.enc.Utf8)
     }
   }
 
