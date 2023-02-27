@@ -1,3 +1,7 @@
+/**
+ * 评论表
+ * @columns id, key, userId, replyId, content
+ */
 const sequelize = require('./sql')
 const {Model, DataTypes} = require('sequelize')
 

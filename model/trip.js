@@ -1,11 +1,7 @@
-/**
- * 图库资源表
- */
 const sequelize = require('./sql')
 const {Model, DataTypes} = require('sequelize')
-
-class Photo extends Model{}
-Photo.init({
+class Trip extends Model{}
+Trip.init({
   id: {
     type: DataTypes.INTEGER(100).UNSIGNED,
     primaryKey: true,
@@ -13,15 +9,10 @@ Photo.init({
     allowNull: false,
     comment: '主键ID'
   },
-  type: {
-    type: DataTypes.INTEGER(1).UNSIGNED,
+  areaName: {
+    type: DataTypes.STRING(20),
     allowNull: false,
-    comment: '1-图片, 2-视频, 3-音频, 4-全景图'
-  },
-  url: {
-    type: DataTypes.STRING(200),
-    allowNull: false,
-    comment: '资源地址'
+    comment: '地点名称'
   },
   longitude: {
     type: DataTypes.FLOAT(20),
@@ -33,14 +24,24 @@ Photo.init({
     allowNull: false,
     comment: '纬度'
   },
+  parentId: {
+    type: DataTypes.INTEGER(100).UNSIGNED,
+    comment: '父级地点ID'
+  },
   text: {
-    type: DataTypes.STRING(200),
-    comment: '位置信息、相机信息-文字描述'
+    type: DataTypes.STRING(500),
+    allowNull: false,
+    comment: '景点介绍'
+  },
+  userId: {
+    type: DataTypes.INTEGER(100).UNSIGNED,
+    allowNull: false,
+    comment: '创建用户ID'
   }
 },{
   sequelize,
-  modelName: 'Photo',
-  tableName: 'photoes',
+  modelName: 'Trip',
+  tableName: 'trips',
 })
 
-module.exports = Photo
+module.exports = Trip
