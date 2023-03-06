@@ -4,7 +4,7 @@ module.exports = {
   DATABASE_PORT: '3306',
   DATABASE_NAME: 'some-data',
   DATABASE_USERNAME: 'root',
-  DATABASE_PASSWORD: 'root',
+  DATABASE_PASSWORD: '123456',
   USER_INIT_ACCOUNT: 'admin',
   USER_INIT_PASSWORD: 'admin123',
   FILE_URL: 'http://file.wghuang.fun'

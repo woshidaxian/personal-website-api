@@ -1,12 +1,11 @@
 const CONFIG = require('./../config/base')
 const { Sequelize } = require('sequelize')
-
 const sequelize = new Sequelize({
-  database: CONFIG.DATABASE.DATABASE_NAME,
-  username: CONFIG.DATABASE.DATABASE_USERNAME,
-  password: CONFIG.DATABASE.DATABASE_PASSWORD,
-  host: CONFIG.DATABASE.DATABASE_URL,
-  port: CONFIG.DATABASE.DATABASE_PORT,
+  database: CONFIG.DATABASE_NAME,
+  username: CONFIG.DATABASE_USERNAME,
+  password: CONFIG.DATABASE_PASSWORD,
+  host: CONFIG.DATABASE_URL,
+  port: CONFIG.DATABASE_PORT,
   dialect: 'mysql',
   logging: false,
   define: {

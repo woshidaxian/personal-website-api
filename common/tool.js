@@ -104,9 +104,48 @@ class Encryption {
 
 }
 
+function isNull(str) {
+  return str === null || str === undefined || str === ''
+}
+
+/**
+ * 参数必传校验
+ */
+class Need {
+  obj = null
+  key = []
+  constructor(obj, ...keys) {
+    this.obj = obj
+    this.key = [...keys]
+  }
+
+  // 全部参数必传
+  async all() {
+    let flag = true
+    await this.key.forEach(k => {
+      if (!this.obj.hasOwnProperty(k) || isNull(this.obj[k])) {
+        flag = false
+      }
+    })
+    return flag
+  }
+
+  // 必传其中一个参数
+  async one() {
+    let flag = false
+    await this.key.forEach(k => {
+      if (this.obj.hasOwnProperty(k) && !isNull(this.obj[k])) {
+        flag = true
+      }
+    })
+    return flag
+  }
+}
 
 module.exports = {
   releaseNesting,
   getOssKey,
-  Encryption
+  Encryption,
+  isNull,
+  Need
 }
